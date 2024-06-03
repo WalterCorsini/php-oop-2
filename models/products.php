@@ -2,11 +2,11 @@
 
 class Products {
 
-    private string  $name;
-    private string  $price;
-    private string  $description;
-    private string  $image;
-    private string  $type;
+    protected string  $name;
+    protected string  $price;
+    protected string  $description;
+    protected string  $image;
+    protected string  $type;
 
     public function __construct(string $name, string $price, string $image, string $type){
         $this->name     = $name;
