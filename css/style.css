@@ -1,4 +1,19 @@
-i{
+*{
+    font-size: 12px;
+}
+
+img{
     width: 20px;
-    aspect-ratio: 1;
+}
+
+body{
+    width: 100%;
+    display: flex;    
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card{
+    width: calc(100% / 4 - 20px / 4);
 }

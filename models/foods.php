@@ -1,35 +1,47 @@
 <?php
 
+// importo classe generica
 require_once __DIR__ . "/products.php";
 
-class Foods extends Products{
+class Foods extends Products  // extends
+{
 
     private string $expirationDate;
-    private int $quantity_in_pack;
+    private int $quantityInPack;
     private int $weigth;
+    private string $message = "non specificato";
 
-    public function __construct(string $name, string $price, string $image,string $type, int $weigth, string $expirationDate)
+
+    public function __construct(string $name, string $price, string $image, Genre $genre, int $weigth, string $expirationDate)
     {
-        parent::__construct($name, $price, $image,$type);
+        parent::__construct($name, $price, $image, $genre);
 
         $this->expirationDate = $expirationDate;
+        // trasformo in chili il peso.
+        $weigth = $weigth / 100;
         $this->weigth = $weigth;
-
     }
 
     // inserimento
-    public function setQuantityInPack($quantity_in_pack)
-    {
-        $this->quantity_in_pack = $quantity_in_pack;
-
-        return $this;
+    public function setQuantityInPack($quantityInPack){
+        $this->quantityInPack = $quantityInPack;
     }
 
-    /**
-     * Get the value of expiration_date
-     */ 
-    public function getExpirationDate()
-    {
+    // stampa 
+    public function getExpirationDate(){
         return $this->expirationDate;
+    }
+
+    public function getWeigth(){
+        return $this->weigth;
+    }
+
+    //  se il valore è vuoto do un messaggio
+    public function getQuantityInPack(){
+        if (!empty($this->quantityInPack)) {
+            return $this->quantityInPack;
+        } else {
+            return $this->message;
+        }
     }
 }
