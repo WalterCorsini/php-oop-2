@@ -3,13 +3,12 @@
 class Products {
 
     private string  $name;
-    private int     $price;
+    private string  $price;
     private string  $description;
-    private int     $weight;
     private string  $image;
-    private string   $type;
+    private string  $type;
 
-    public function __construct(string $name, int $price, string $image, string $type){
+    public function __construct(string $name, string $price, string $image, string $type){
         $this->name     = $name;
         $this->price    = $price;
         $this->image    = $image;
@@ -23,9 +22,6 @@ class Products {
         $this->description = $description;
     }
 
-    public function setWeight($weight){
-        $this->weight = $weight;
-    }
 
     
 // stampa
@@ -39,10 +35,6 @@ class Products {
 
     public function getDescription(){
         return $this->description;
-    }
-
-    public function getWeight(){
-        return $this->weight;
     }
 
     public function getImage(){

@@ -18,4 +18,5 @@ card
 immagine 
 titolo
 prezzo
+icona cane o gatto
 icona del tipo di categoria(cibo gioco,cuccia)
