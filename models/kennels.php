@@ -17,5 +17,9 @@ class Kennels extends Products{
     public function setWashable($washable){
         $this->washable = $washable;
     }
+
+    public function getSize(){
+        return $this->size;
+    }
 }
 ?>

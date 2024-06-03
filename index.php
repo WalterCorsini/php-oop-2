@@ -97,22 +97,30 @@ $arrayProducts->SetProducts($products11);
 <body>
     <?php foreach ($arrayProducts->getProducts() as $curProduct) { ?>
         <div class="card" style="width: 18rem;">
-            <!-- <img class="card-img-top" src="<?php echo $curProduct->getImage() ?>" alt="Card image cap"> -->
+            <img class="card-img-top" src="<?php echo $curProduct->getImage() ?>" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text">
                     <?php
-                        echo $curProduct->getName()
-
-                    ?>
-                </p>
-                <p class="card-text">
-                    <?php
-                        echo $curProduct->getPrice() . " euro";
+                        echo $curProduct->getName();
                         if(strtolower($curProduct->gettype()) === "cane"){
                             echo "<i class='fa-solid fa-dog text-success'></i>";
                         } else {
                             echo "<i class='fa-solid fa-cat text-danger'></i> ";
                         }
+                        if(method_exists($curProduct, 'getExpirationDate')){
+                            echo "<i class='fa-solid fa-utensils'></i>";
+                        }
+                        if(method_exists($curProduct, 'getSuggestedAnimalSize')){
+                            echo "<i class='fa fa-solid fa-gamepad'></i>";
+                        }
+                        if(method_exists($curProduct, 'getSize')){
+                            echo "<i class='fa-solid fa-house'></i>";
+                        }
+                    ?>
+                </p>
+                <p class="card-text">
+                    <?php
+                        echo $curProduct->getPrice() . " euro";
                     ?>
                 </p>
                 <p class="card-text">
