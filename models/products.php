@@ -12,19 +12,19 @@ class Products
 
     public function __construct(string $name, float $price, string $image, Genre $genre)
     {
-        $nameTrim = str_replace(" ","", $name);
+        $nameTrim = str_replace(" ", "", $name);
         if (strlen($nameTrim) >= 4) {
             $this->name = $name;
         } else {
             throw new Exception("non puoi inserire numeri o caratteri speciali");
         }
-        if($price > 0){
+        if ($price > 0) {
             $this->price    = $price;
-        } else{
+        } else {
             throw new Exception("non puoi inserire un valore negativo");
         }
         // se esiste l'immagine nella directory
-        if(file_exists($image)){
+        if (file_exists($image)) {
             $this->image    = $image;
         } else {
             throw new Exception("inserisci una directory corretta");
@@ -36,8 +36,8 @@ class Products
     public function setDescription($description)
     {
         //  controllo caratteri minimo massimo senza considerare lo spazio
-        $descriptionNoSpace = str_replace(" ","",$description);
-        if(strlen($descriptionNoSpace) >= 10 && strlen($descriptionNoSpace) <=100){
+        $descriptionNoSpace = str_replace(" ", "", $description);
+        if (strlen($descriptionNoSpace) >= 10 && strlen($descriptionNoSpace) <= 100) {
             $this->description = $description;
         }
     }
@@ -56,7 +56,7 @@ class Products
     // stampa descrizione con controllo alla stampa per poterlo visualizzare nel punto corretto
     public function getDescription()
     {
-        if(!isset($this->description)){  
+        if (!isset($this->description)) {
             throw new Exception("inserisci una descrizione da min 10 caratteri a massimo 100");
         }
         return $this->description;
@@ -67,7 +67,8 @@ class Products
         return $this->image;
     }
 
-    public function getIconCategory(){
+    public function getIconCategory()
+    {
         return $this->iconCategory;
     }
 }

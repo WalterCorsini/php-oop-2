@@ -1,17 +1,17 @@
 <?php
 
 // importo classe generica
+require_once __DIR__ . "/../traits/weightable.php";
 require_once __DIR__ . "/products.php";
 
-class Toys extends Products  // extends
-{
+class Toys extends Products {
+    use Weightable;
 
     private bool $batteriesRequired;  // true or false
     private string $material;      // plastic,bone,wood,wool
     private array $arrayMaterial=["bone","wood","plastic","wool","cotton"];
     private string $suggestedAnimalSize; // S,M,L
     private string $message = "???";
-
     public function __construct(string $name, float $price, string $image, Genre $genre, string $material, string $suggestedAnimalSize)
     {
         parent::__construct($name, $price, $image, $genre);

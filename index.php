@@ -9,25 +9,34 @@ require_once __DIR__ . "/models/arrayProducts.php";
 
 
 // cibo gatto
-$products1 = new Foods("Carne di squalo bianco", 25.00, "./img/squalo.jpeg", new Genre("gatto"), "1000", "2024/06/04");
+$products1 = new Foods("Carne di squalo bianco", 25.00, "./img/squalo.jpeg", new Genre("gatto"), "2024/06/04");
 $products1->setDescription("descrizione carne squalo bianco");
 $products1->setQuantityInPack(10);
-$products2 = new Foods("Patè di trota albina", 1, "./img/trota.jpeg", new Genre("gatto"), "800", "2024/06/04");
+
+
+$products2 = new Foods("Patè di trota albina", 1, "./img/trota.jpeg", new Genre("gatto"), "2024/06/04");
 $products2->setDescription("< 10");  // minore di 10 caratteri
 $products2->setQuantityInPack(6);
 
+
+
 // cibo cane
-$products3 = new Foods("Carne cervo Canadese", 25.00, "./img/cervo.jpeg", new Genre("Cane"), "1000", "2023/06/04");
+$products3 = new Foods("Carne cervo Canadese", 25.00, "./img/cervo.jpeg", new Genre("Cane"), "2023/06/04");
 $products3->setDescription("descrizione carne cervo");
 $products3->setQuantityInPack(10);
-$products4 = new Foods("carne di cogniglio lillipuzziano", 12.00, "./img/coniglio.jpeg", new Genre("Cane"), "800", "2024/05/02");
+
+
+$products4 = new Foods("carne di cogniglio lillipuzziano", 12.00, "./img/coniglio.jpeg", new Genre("Cane"), "2024/05/02");
 $products4->setDescription("descrizione carne coniglio");
 $products4->setQuantityInPack(6);
+
 
 // gioco catto
 $products5 = new Toys("Gomitolo di lana", 9.99, "./img/gomitolo.png", new Genre("gatto"), "wool", "S");
 $products5->setDescription("descrizione gomitolo");
 $products5->setBatteriesRequired(false);
+
+
 $products6 = new Toys("topolino corri corri", 19.99, "./img/topolino.jpeg", new Genre("gatto"), "plastic", "M");
 $products6->setDescription("descrizione topolino corri corri");
 // $products5->setBatteriesRequired(true);  provo senza passargli il dato
@@ -39,6 +48,9 @@ $products8->setBatteriesRequired(false);
 $products7 = new Toys("palla lancia e riporta", 19.99, "./img/pallina.jpeg", new Genre("Cane"), "plastic", "M");
 $products7->setDescription("descrizione pallina lancia e riporta");
 $products7->setBatteriesRequired(true);
+
+
+
 
 // cuccia gatto
 $products10 = new Kennels("cuccetta da interno", 19.99, "./img/cuccettainterno1.jpeg", new Genre("gatto"), "Cotton", "all size");
@@ -57,6 +69,19 @@ $products11 = new Kennels("cuccetta da esterno", 29.99, "./img/cuccettaesterno2.
 $products11->setDescription("< 10"); // minore 10 caratteri
 $products11->setWashable(false);
 
+// inserimento peso con traits
+$products1->setWeight(9500);
+$products2->setWeight(7500);
+$products3->setWeight(6000);
+$products4->setWeight(10000);
+$products5->setWeight(400);
+$products6->setWeight(300);
+$products7->setWeight(200);
+$products8->setWeight(100);
+$products9->setWeight(5000);
+$products10->setWeight(10000);
+$products11->setWeight(7000);
+$products12->setWeight(10000);
 
 // creo istanza array di prodotti
 $arrayProducts = new ArrayProducts();
@@ -117,7 +142,6 @@ $arrayProducts->SetProducts($products12);
                     <!-- controllo se esiste la data di scadenza e la stampo -->
                     <?php if (method_exists($curProduct, 'getExpirationDate')) {
                         echo "scadenza: " . $curProduct->getExpirationDate() . "<br>";
-                        echo "peso: " . $curProduct->getWeigth() . " kg <br>";
                         echo $curProduct->getQuantityInPack() . " pz x confezione";
                     }
                     ?>
@@ -137,9 +161,13 @@ $arrayProducts->SetProducts($products12);
                     if (method_exists($curProduct, 'getSuggestedAnimalSize')) {
                         echo "Taglia: " . $curProduct->getSuggestedAnimalSize() . "<br>";
                         echo "Materiale: " . $curProduct->getMaterial() . "<br>";
-                        echo "Batterie richieste: " . $curProduct->getBatteriesRequired();
+                        echo "Batterie richieste: " . $curProduct->getBatteriesRequired() . "<br>";
                     }
                     ?>
+                </p>
+                <p>
+                    <?php echo "Peso: " . $curProduct->getWeight() . " kg <br>"; ?>
+
                 </p>
                 <p class="card-text">
                     <!-- stampo descrizione -->
