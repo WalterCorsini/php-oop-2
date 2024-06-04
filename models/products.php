@@ -3,6 +3,7 @@
 class Products
 {
     protected string    $name;
+    // string mi permette di inserire numeri decimali e cmq di fare operazioni algebriche
     protected string    $price;
     protected string    $description;
     protected string    $image;
@@ -10,7 +11,12 @@ class Products
 
     public function __construct(string $name, string $price, string $image, Genre $genre)
     {
-        $this->name     = $name;
+        $nameTrim = str_replace(" ","", $name);
+        if (strlen($nameTrim) >= 4) {
+            $this->name = $name;
+        } else {
+            throw new Exception("non puoi inserire numeri o caratteri speciali");
+        }
         $this->price    = $price;
         $this->image    = $image;
         $this->genre = $genre;
