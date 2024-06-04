@@ -14,21 +14,23 @@ class Kennels extends Products  // extends
     public function __construct(string $name, float $price, string $image, Genre $genre, string $material, string $size)
     {
         parent::__construct($name, $price, $image, $genre);
-        //  controllo se i valori sono tra quelli consentiti
+
+        //  controllo se i valori di Size
         if(strtolower($size) === "s" || strtolower($size) === "m" || strtolower($size) === "l" || strtolower($size) === "all size" ){
             $this->size = $size;
         } else {
             throw new Exception("valori consentit S M L o All Size");
         }
 
-        // cotton, leather, pvc, wood
+        // controllo i valori di Material
         if(in_array(strtolower($material), $this->arrayMaterial)){
             $this->material = $material;
         } else {
             throw new Exception("valori compresi: cotton,leather,pvc,wood,plastic");
         }
+        
         // inserimento icona categoria
-        $this->iconCategory = "<i class='fa-solid fa-house'></i>";        
+        $this->iconCategory = "Categoria Cucce <i class='fa-solid fa-house'></i>";        
     }    
 
     // inserimento

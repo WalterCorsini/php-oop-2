@@ -13,7 +13,7 @@ $products1 = new Foods("Carne di squalo bianco", 25.00, "./img/squalo.jpeg", new
 $products1->setDescription("descrizione carne squalo bianco");
 $products1->setQuantityInPack(10);
 $products2 = new Foods("Patè di trota albina", 1, "./img/trota.jpeg", new Genre("gatto"), "800", "2024/06/04");
-$products2->setDescription("descrizione carne squalo bianco");
+$products2->setDescription("< 10");  // minore di 10 caratteri
 $products2->setQuantityInPack(6);
 
 // cibo cane
@@ -54,7 +54,7 @@ $products12 = new Kennels("cuccetta da interno", 19.99, "./img/cuccettainterno2.
 $products12->setDescription("descrizione cuccetta da interno");
 $products12->setWashable(true);
 $products11 = new Kennels("cuccetta da esterno", 29.99, "./img/cuccettaesterno2.jpeg", new Genre("Cane"), "plastic", "S");
-$products11->setDescription("descrizione cuccetta da interno");
+$products11->setDescription("< 10"); // minore 10 caratteri
 $products11->setWashable(false);
 
 
@@ -102,7 +102,7 @@ $arrayProducts->SetProducts($products12);
                     //  ottento nome prodotto
                     echo $curProduct->getName();
                     //  inserimento icona cane o gatto
-                        echo $curProduct->genre->getGenre();
+                    echo $curProduct->genre->getGenre();
                     // inserimento icona categoria
                     echo $curProduct->getIconCategory();
                     ?>
@@ -143,7 +143,12 @@ $arrayProducts->SetProducts($products12);
                 </p>
                 <p class="card-text">
                     <!-- stampo descrizione -->
-                    <?php echo $curProduct->getDescription(); ?>
+                    <?php
+                    try {
+                        echo $curProduct->getDescription();
+                    } catch (Exception $e) {
+                        echo "Eccezione: " . $e->getMessage();
+                    } ?>
                 </p>
             </div>
         </div>

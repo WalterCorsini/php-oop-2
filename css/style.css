@@ -1,19 +1,21 @@
 *{
     font-size: 12px;
+    text-align: center;
 }
 
-img{
+/* img{
     width: 20px;
-}
+} */
 
 body{
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     display: flex;    
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .card{
-    width: calc(100% / 4 - 20px / 4);
+    width: calc(100% / 4 - 60px / 4);
 }
