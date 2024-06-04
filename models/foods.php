@@ -12,19 +12,33 @@ class Foods extends Products  // extends
     private string $message = "non specificato";
 
 
-    public function __construct(string $name, string $price, string $image, Genre $genre, int $weigth, string $expirationDate)
+    public function __construct(string $name, float $price, string $image, Genre $genre, int $weigth, string $expirationDate)
     {
         parent::__construct($name, $price, $image, $genre);
+//  controllare bene il controllo data
+        // $curDate = new DateTime();
+        // $curDate = $curDate->format('Y-m-d');
+        // $expirationDateFormat = $expirationDate->format('Y-m-d');
+        // if($expirationDate > $curDate){
+            $this->expirationDate = $expirationDate;
+            // $this->expirationDate = $expirationDate;
+        // } else {
+        //     throw new Exception("non puoi inserire un prodotto gia scaduto");
+        // }
 
-        $this->expirationDate = $expirationDate;
         // trasformo in chili il peso.
         $weigth = $weigth / 100;
         $this->weigth = $weigth;
+
+        // inserimento icona categoria
+        $this->iconCategory = "<i class='fa-solid fa-utensils'></i>";        
     }
 
     // inserimento
     public function setQuantityInPack($quantityInPack){
-        $this->quantityInPack = $quantityInPack;
+        if($quantityInPack >= 1 || $quantityInPack <=100){
+            $this->quantityInPack = $quantityInPack;
+        }
     }
 
     // stampa 

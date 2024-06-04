@@ -9,51 +9,51 @@ require_once __DIR__ . "/models/arrayProducts.php";
 
 
 // cibo gatto
-$products1 = new Foods("Carne di squalo bianco", "25.00", "./img/squalo.jpeg", new Genre("gatto"), "1000", "21/11/2024");
+$products1 = new Foods("Carne di squalo bianco", 25.00, "./img/squalo.jpeg", new Genre("gatto"), "1000", "2024/06/04");
 $products1->setDescription("descrizione carne squalo bianco");
 $products1->setQuantityInPack(10);
-$products2 = new Foods("Patè di trota albina", "12.00", "./img/trota.jpeg", new Genre("gatto"), "800", "11/01/2025");
+$products2 = new Foods("Patè di trota albina", 1, "./img/trota.jpeg", new Genre("gatto"), "800", "2024/06/04");
 $products2->setDescription("descrizione carne squalo bianco");
 $products2->setQuantityInPack(6);
 
 // cibo cane
-$products3 = new Foods("Carne cervo Canadese", "25.00", "./img/cervo.jpeg", new Genre("Cane"), "1000", "21/11/2024");
+$products3 = new Foods("Carne cervo Canadese", 25.00, "./img/cervo.jpeg", new Genre("Cane"), "1000", "2023/06/04");
 $products3->setDescription("descrizione carne cervo");
 $products3->setQuantityInPack(10);
-$products4 = new Foods("carne di cogniglio lillipuzziano", "12.00", "./img/coniglio.jpeg", new Genre("Cane"), "800", "11/01/2025");
+$products4 = new Foods("carne di cogniglio lillipuzziano", 12.00, "./img/coniglio.jpeg", new Genre("Cane"), "800", "2024/05/02");
 $products4->setDescription("descrizione carne coniglio");
 $products4->setQuantityInPack(6);
 
 // gioco catto
-$products5 = new Toys("Gomitolo di lana", "9.99", "./img/gomitolo.png", new Genre("gatto"), "wool", "S");
+$products5 = new Toys("Gomitolo di lana", 9.99, "./img/gomitolo.png", new Genre("gatto"), "wool", "S");
 $products5->setDescription("descrizione gomitolo");
 $products5->setBatteriesRequired(false);
-$products6 = new Toys("topolino corri corri", "19.99", "./img/topolino.jpeg", new Genre("gatto"), "plastic", "M");
+$products6 = new Toys("topolino corri corri", 19.99, "./img/topolino.jpeg", new Genre("gatto"), "plastic", "M");
 $products6->setDescription("descrizione topolino corri corri");
 // $products5->setBatteriesRequired(true);  provo senza passargli il dato
 
 // gioco cane
-$products8 = new Toys("osso crick crock", "29.99", "./img/osso.jpeg", new Genre("Cane"), "bone", "M");
+$products8 = new Toys("osso crick crock", 29.99, "./img/osso.jpeg", new Genre("Cane"), "bone", "M");
 $products8->setDescription("descrizione osso crick crock");
 $products8->setBatteriesRequired(false);
-$products7 = new Toys("palla lancia e riporta", "19.99", "./img/pallina.jpeg", new Genre("Cane"), "plastic", "M");
+$products7 = new Toys("palla lancia e riporta", 19.99, "./img/pallina.jpeg", new Genre("Cane"), "plastic", "M");
 $products7->setDescription("descrizione pallina lancia e riporta");
 $products7->setBatteriesRequired(true);
 
 // cuccia gatto
-$products10 = new Kennels("cuccetta da interno", "19.99", "./img/cuccettainterno1.jpeg", new Genre("gatto"), "Cotton", "all size");
+$products10 = new Kennels("cuccetta da interno", 19.99, "./img/cuccettainterno1.jpeg", new Genre("gatto"), "Cotton", "all size");
 $products10->setDescription("descrizione cuccetta da interno");
 $products10->setWashable(true);
-$products9 = new Kennels("cuccetta da esterno", "29.99", "./img/cuccettaesterno1.jpeg", new Genre("gatto"), "plastic", "S");
+$products9 = new Kennels("cuccetta da esterno", 29.99, "./img/cuccettaesterno1.jpeg", new Genre("gatto"), "plastic", "S");
 $products9->setDescription("descrizione cuccetta da interno");
 // $products9->setWashable(false); // provo senza passargli il dato
 
 
 // cuccia cane
-$products12 = new Kennels("cuccetta da interno", "19.99", "./img/cuccettainterno2.jpeg", new Genre("Cane"), "Cotton", "all size");
+$products12 = new Kennels("cuccetta da interno", 19.99, "./img/cuccettainterno2.jpeg", new Genre("Cane"), "Cotton", "all size");
 $products12->setDescription("descrizione cuccetta da interno");
 $products12->setWashable(true);
-$products11 = new Kennels("cuccetta da esterno", "29.99", "./img/cuccettaesterno2.jpeg", new Genre("Cane"), "plastic", "S");
+$products11 = new Kennels("cuccetta da esterno", 29.99, "./img/cuccettaesterno2.jpeg", new Genre("Cane"), "plastic", "S");
 $products11->setDescription("descrizione cuccetta da interno");
 $products11->setWashable(false);
 
@@ -101,22 +101,10 @@ $arrayProducts->SetProducts($products12);
                     <?php
                     //  ottento nome prodotto
                     echo $curProduct->getName();
-                    //  controllo genere per inserire icona cane o gatto
-                    if (strtolower($curProduct->genre->getGenre()) === "cane") {
-                        echo " <i class='fa-solid fa-dog text-success'></i> ";
-                    } else {
-                        echo " <i class='fa-solid fa-cat text-danger'></i> ";
-                    }
-                    //  controllo un dato esistente solo nella clase foods per assegnare l'icona
-                    if (method_exists($curProduct, 'getExpirationDate')) {
-                        echo " <i class='fa-solid fa-utensils'></i> ";
-                        //  controllo un dato esistente solo nella clase toys per assegnare l'icona
-                    } elseif (method_exists($curProduct, 'getSuggestedAnimalSize')) {
-                        echo " <i class='fa fa-solid fa-gamepad'></i> ";
-                        //  per esclusione è una cuccia
-                    } else {
-                        echo " <i class='fa-solid fa-house'></i> ";
-                    }
+                    //  inserimento icona cane o gatto
+                        echo $curProduct->genre->getGenre();
+                    // inserimento icona categoria
+                    echo $curProduct->getIconCategory();
                     ?>
                 </p>
                 <p class="card-text">

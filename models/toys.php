@@ -11,12 +11,14 @@ class Toys extends Products  // extends
     private string $suggestedAnimalSize; // S,M,L
     private string $message = "???";
 
-    public function __construct(string $name, string $price, string $image, Genre $genre, string $material, string $suggestedAnimalSize)
+    public function __construct(string $name, float $price, string $image, Genre $genre, string $material, string $suggestedAnimalSize)
     {
         parent::__construct($name, $price, $image, $genre);
         $this->suggestedAnimalSize = $suggestedAnimalSize;
         $this->material = $material;
-    }
+                // inserimento icona categoria
+                $this->iconCategory = "<i class='fa-solid fa-gamepad'></i>";        
+            }
 
     // inserimento valori
     public function setBatteriesRequired($batteries_required)

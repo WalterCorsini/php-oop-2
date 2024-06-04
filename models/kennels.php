@@ -11,7 +11,7 @@ class Kennels extends Products  // extends
     private string $size; // S,M,L,All size
     private string $message = "???";
 
-    public function __construct(string $name, string $price, string $image, Genre $genre, string $material, string $size)
+    public function __construct(string $name, float $price, string $image, Genre $genre, string $material, string $size)
     {
         parent::__construct($name, $price, $image, $genre);
         //  controllo se i valori sono tra quelli consentiti
@@ -27,11 +27,12 @@ class Kennels extends Products  // extends
         } else {
             throw new Exception("valori compresi: cotton,leather,pvc,wood,plastic");
         }
-    }
+        // inserimento icona categoria
+        $this->iconCategory = "<i class='fa-solid fa-house'></i>";        
+    }    
 
     // inserimento
-    public function setWashable($washable)
-    {
+    public function setWashable($washable){
         if($washable === true || $washable === false){
             $this->washable = $washable;
         } else {
