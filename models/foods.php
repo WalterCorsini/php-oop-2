@@ -1,8 +1,8 @@
 <?php
 
 // importo classe generica
-require_once __DIR__ . "/../traits/weightable.php";
 require_once __DIR__ . "/products.php";
+require_once __DIR__ . "/../traits/weightable.php";
 
 class Foods extends Products{
     use Weightable;

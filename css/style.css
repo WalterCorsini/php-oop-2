@@ -19,3 +19,19 @@ body{
 .card{
     width: calc(100% / 4 - 60px / 4);
 }
+
+.text-red{
+    color: red;
+}
+
+.errori{
+    width: 350px;
+    position: absolute;
+    z-index: 10;
+    top: 10%;
+    left: 5%;
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+    padding: 10px;
+}

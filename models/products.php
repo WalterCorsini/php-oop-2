@@ -39,6 +39,9 @@ class Products
         $descriptionNoSpace = str_replace(" ", "", $description);
         if (strlen($descriptionNoSpace) >= 10 && strlen($descriptionNoSpace) <= 100) {
             $this->description = $description;
+        } else {
+            $this->description = "";
+            throw new exception("inserisci una descrizione tra i 10 e i 100 caratteri");
         }
     }
 
@@ -56,10 +59,7 @@ class Products
     // stampa descrizione con controllo alla stampa per poterlo visualizzare nel punto corretto
     public function getDescription()
     {
-        if (!isset($this->description)) {
-            throw new Exception("inserisci una descrizione da min 10 caratteri a massimo 100");
-        }
-        return $this->description;
+            return $this->description;
     }
 
     public function getImage()
