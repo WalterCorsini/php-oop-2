@@ -3,38 +3,23 @@
 // importo classe generica
 require_once __DIR__ . "/products.php";
 require_once __DIR__ . "/products.php";
-class Kennels extends Products{
+class Kennels extends Products
+{
     use Weightable;
-
-    private bool $washable;  // true or false
-    private string $material;      // cotton, leather, pvc, wood
+    private bool $washable;
+    private string $material;
     private array $arrayMaterial = ["cotton", "leather", "pvc", "wood", "plastic"];
-    private string $size; // S,M,L,All size
+    private string $size;
     private string $message = "???";
 
-    public function __construct(string $name, float $price, string $image, Genre $genre, string $material, string $size){
-        parent::__construct($name, $price, $image, $genre);
-
-        //  controllo se i valori di Size
-        if (strtolower($size) === "s" || strtolower($size) === "m" || strtolower($size) === "l" || strtolower($size) === "all size") {
-            $this->size = $size;
-        } else {
-            throw new Exception("valori consentit S M L o All Size");
-        }
-
-        // controllo i valori di Material
-        if (in_array(strtolower($material), $this->arrayMaterial)) {
-            $this->material = $material;
-        } else {
-            throw new Exception("valori compresi: cotton,leather,pvc,wood,plastic");
-        }
-
-        // inserimento icona categoria
+    public function __construct(string $genre)
+    {
+        parent::__construct($genre);
         $this->iconCategory = "Categoria Cucce <i class='fa-solid fa-house'></i>";
     }
 
-    // inserimento
-    public function setWashable($washable){
+    public function setWashable($washable)
+    {
         if ($washable === true || $washable === false) {
             $this->washable = $washable;
         } else {
@@ -42,14 +27,8 @@ class Kennels extends Products{
         }
     }
 
-
-    // stampa
-    public function getSize(){
-        return $this->size;
-    }
-
-    //  se non è specifificato stampo comunque qualcosa
-    public function getWashable(){
+    public function getWashable()
+    {
         if (isset($this->washable)) {
             if ($this->washable === true) {
                 $this->message = "Si";
@@ -60,7 +39,32 @@ class Kennels extends Products{
         return $this->message;
     }
 
-    public function getMaterial(){
+    public function setSize($size)
+    {
+
+        if (strtolower($size) === "s" || strtolower($size) === "m" || strtolower($size) === "l" || strtolower($size) === "all size") {
+            $this->size = $size;
+        } else {
+            throw new Exception("valori consentit S M L o All Size");
+        }
+    }
+
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    public function setMaterial($material)
+    {
+        if (in_array(strtolower($material), $this->arrayMaterial)) {
+            $this->material = $material;
+        } else {
+            throw new Exception("valori compresi: cotton,leather,pvc,wood,plastic");
+        }
+    }
+
+    public function getMaterial()
+    {
         return $this->material;
     }
 }

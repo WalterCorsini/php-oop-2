@@ -1,23 +1,40 @@
 <?php
-// importo classi
 require_once __DIR__ . "/models/products.php";
 require_once __DIR__ . "/models/toys.php";
 require_once __DIR__ . "/models/genre.php";
 require_once __DIR__ . "/models/foods.php";
 require_once __DIR__ . "/models/kennels.php";
 require_once __DIR__ . "/models/arrayProducts.php";
+
 $arrayErrori = [];
 
-// cibo gatto
-$products1 = new Foods("Carne di squalo bianco", 25.00, "./img/squalo.jpeg", new Genre("gatto"), "2024/06/04");
-$products1->setDescription("descrizione carne squalo bianco");
+// item 1
+$products1 = new Foods("Gatto");
+$products1->setName("Carne di squalo bianco");
+$products1->setPrice(25.00);
+$products1->setImage("./img/squalo.jpeg");
 $products1->setQuantityInPack(10);
+$products1->setExpirationDate(2024 / 06 / 29);
+$products1->setWeight(9500);
 
 
-$products2 = new Foods("Patè di trota albina", 1, "./img/trota.jpeg", new Genre("gatto"), "2024/06/04");
+try {
+    $products1->setDescription("descrizione carne squalo bianco");
+} catch (Exception $e) {
+    $errore["messaggio"] = $e->getMessage();
+    $errore["riga"] = $e->getLine();
+    $arrayErrori[] = $errore;
+}
+
+// item 2
+$products2 = new Foods("Gatto");
+$products2->setName("Patè di trota albina");
+$products2->setPrice(10.00);
+$products2->setImage("./img/trota.jpeg");
 $products2->setQuantityInPack(6);
+$products2->setExpirationDate(2024 / 07 / 2025);
+$products2->setWeight(7500);
 
-//  exception in descrizione gestita in array di errori e stampata in pagina in un div.
 try {
     $products2->setDescription("descrizione pate di trota albina");
 } catch (Exception $e) {
@@ -27,10 +44,14 @@ try {
 }
 
 
-// cibo cane
-$products3 = new Foods("Carne cervo Canadese", 25.00, "./img/cervo.jpeg", new Genre("Cane"), "2023/06/04");
-$products3->setQuantityInPack(10);
-
+// item 3
+$products3 = new Foods("Cane");
+$products3->setName("carne di cervo canadese");
+$products3->setPrice(10.00);
+$products3->setImage("./img/cervo.jpeg");
+$products3->setQuantityInPack(6);
+$products3->setExpirationDate(2024 / 07 / 2025);
+$products3->setWeight(6000);
 try {
     $products3->setDescription("desscrizione carne di cerco canadese");
 } catch (Exception $e) {
@@ -39,22 +60,31 @@ try {
     $arrayErrori[] = $errore;
 }
 
-
-$products4 = new Foods("carne di cogniglio lillipuzziano", 12.00, "./img/coniglio.jpeg", new Genre("Cane"), "2024/05/02");
+// item 4
+$products4 = new Foods("Cane");
+$products4->setName("carne di coniglio lillipuzziano");
+$products4->setPrice(12.00);
+$products4->setImage("./img/coniglio.jpeg");
 $products4->setQuantityInPack(6);
-
+$products4->setExpirationDate(2024 / 07 / 2025);
+$products4->setWeight(10000);
 try {
-    $products4->setDescription("descrizione carne coniglio");
+    $products4->setDescription("desscrizione carne di coniglio lillipuzziano");
 } catch (Exception $e) {
     $errore["messaggio"] = $e->getMessage();
     $errore["riga"] = $e->getLine();
     $arrayErrori[] = $errore;
 }
 
-// gioco catto
-$products5 = new Toys("Gomitolo di lana", 9.99, "./img/gomitolo.png", new Genre("gatto"), "wool", "S");
+// item 5
+$products5 = new Toys("Gatto");
+$products5->setName("gomitolo di lana");
+$products5->setPrice(9.99);
+$products5->setImage("./img/gomitolo.png");
 $products5->setBatteriesRequired(false);
-
+$products5->setMaterial("wool");
+$products5->setSuggestedAnimalSize("S");
+$products5->setWeight(400);
 try {
     $products5->setDescription("descrizione gomitolo");
 } catch (Exception $e) {
@@ -63,8 +93,15 @@ try {
     $arrayErrori[] = $errore;
 }
 
-$products6 = new Toys("topolino corri corri", 19.99, "./img/topolino.jpeg", new Genre("gatto"), "plastic", "M");
-
+// item 6
+$products6 = new Toys("Gatto");
+$products6->setName("Topolino corri corri");
+$products6->setPrice(19.99);
+$products6->setImage("./img/topolino.jpeg");
+$products6->setBatteriesRequired(false);
+$products6->setMaterial("plastic");
+$products6->setSuggestedAnimalSize("M");
+$products6->setWeight(300);
 try {
     $products6->setDescription("descrizione topolino corri corri");
 } catch (Exception $e) {
@@ -72,12 +109,34 @@ try {
     $errore["riga"] = $e->getLine();
     $arrayErrori[] = $errore;
 }
-// $products5->setBatteriesRequired(true);  provo senza passargli il dato
 
-// gioco cane
-$products8 = new Toys("osso crick crock", 29.99, "./img/osso.jpeg", new Genre("Cane"), "bone", "M");
+
+// item 7
+$products7 = new Toys("Cane");
+$products7->setName("palla lancia e riporta");
+$products7->setPrice(19.99);
+$products7->setImage("./img/pallina.jpeg");
+$products7->setBatteriesRequired(false);
+$products7->setMaterial("plastic");
+$products7->setSuggestedAnimalSize("M");
+$products7->setWeight(200);
+try {
+    $products7->setDescription("descrizione palla lncia e riporta");
+} catch (Exception $e) {
+    $errore["messaggio"] = $e->getMessage();
+    $errore["riga"] = $e->getLine();
+    $arrayErrori[] = $errore;
+}
+
+// item 8
+$products8 = new Toys("Cane");
+$products8->setName("osso crick crok");
+$products8->setPrice(29.99);
+$products8->setImage("./img/osso.jpeg");
 $products8->setBatteriesRequired(false);
-
+$products8->setMaterial("bone");
+$products8->setSuggestedAnimalSize("M");
+$products8->setWeight(100);
 try {
     $products8->setDescription("descrizione osso crick crock");
 } catch (Exception $e) {
@@ -86,24 +145,32 @@ try {
     $arrayErrori[] = $errore;
 }
 
-
-$products7 = new Toys("palla lancia e riporta", 19.99, "./img/pallina.jpeg", new Genre("Cane"), "plastic", "M");
-$products7->setBatteriesRequired(true);
-
+// item 9
+$products9 = new Kennels("Gatto");
+$products9->setName("cuccetta da esterno");
+$products9->setPrice(29.99);
+$products9->setImage("./img/cuccettaesterno1.jpeg");
+$products9->setMaterial("plastic");
+$products9->setSize("S");
+$products9->setWashable(false);
+$products9->setWeight(5000);
 try {
-    $products7->setDescription("descrizione pallina lancia e riporta");
+    $products9->setDescription("descrizione cuccetta da esterno");
 } catch (Exception $e) {
     $errore["messaggio"] = $e->getMessage();
     $errore["riga"] = $e->getLine();
     $arrayErrori[] = $errore;
 }
 
-
-
-// cuccia gatto
-$products10 = new Kennels("cuccetta da interno", 19.99, "./img/cuccettainterno1.jpeg", new Genre("gatto"), "Cotton", "all size");
+// item 10
+$products10 = new Kennels("Gatto");
+$products10->setName("cuccetta da interno");
+$products10->setPrice(19.99);
+$products10->setImage("./img/cuccettainterno1.jpeg");
+$products10->setMaterial("Cotton");
+$products10->setSize("All Size");
 $products10->setWashable(true);
-
+$products10->setWeight(10000);
 try {
     $products10->setDescription("descrizione cuccetta da interno");
 } catch (Exception $e) {
@@ -112,57 +179,43 @@ try {
     $arrayErrori[] = $errore;
 }
 
-
-$products9 = new Kennels("cuccetta da esterno", 29.99, "./img/cuccettaesterno1.jpeg", new Genre("gatto"), "plastic", "S");
-
-try {
-    $products9->setDescription("descrizione cuccetta da esterno");
-} catch (Exception $e) {
-    $errore["messaggio"] = $e->getMessage();
-    $errore["riga"] = $e->getLine();
-    $arrayErrori[] = $errore;
-}
-// $products9->setWashable(false); // provo senza passargli il dato
-
-
-// cuccia cane
-$products12 = new Kennels("cuccetta da interno", 19.99, "./img/cuccettainterno2.jpeg", new Genre("Cane"), "Cotton", "all size");
-$products12->setWashable(true);
-try {
-    $products12->setDescription("descrizione");
-} catch (Exception $e) {
-    $errore["messaggio"] = $e->getMessage();
-    $errore["riga"] = $e->getLine();
-    $arrayErrori[] = $errore;
-}
-
-$products11 = new Kennels("cuccetta da esterno", 29.99, "./img/cuccettaesterno2.jpeg", new Genre("Cane"), "plastic", "S");
-$products11->setWashable(false);
-try {
-    $products11->setDescription("desc"); // minore 10 caratteri
-} catch (Exception $e) {
-    $errore["messaggio"] = $e->getMessage();
-    $errore["riga"] = $e->getLine();
-    $arrayErrori[] = $errore;
-}
-
-// inserimento peso con traits
-$products1->setWeight(9500);
-$products2->setWeight(7500);
-$products3->setWeight(6000);
-$products4->setWeight(10000);
-$products5->setWeight(400);
-$products6->setWeight(300);
-$products7->setWeight(200);
-$products8->setWeight(100);
-$products9->setWeight(5000);
-$products10->setWeight(10000);
+// item 11
+$products11 = new Kennels("Cane");
+$products11->setName("cuccetta da esterno");
+$products11->setPrice(29.99);
+$products11->setImage("./img/cuccettaesterno2.jpeg");
+$products11->setMaterial("Plastic");
+$products11->setSize("S");
+$products11->setWashable(true);
 $products11->setWeight(7000);
+try {
+    $products11->setDescription("descrizione cuccetta da esterno");
+} catch (Exception $e) {
+    $errore["messaggio"] = $e->getMessage();
+    $errore["riga"] = $e->getLine();
+    $arrayErrori[] = $errore;
+}
+
+// item 12
+$products12 = new Kennels("Cane");
+$products12->setName("cuccetta da interno");
+$products12->setPrice(19.99);
+$products12->setImage("./img/cuccettainterno2.jpeg");
+$products12->setMaterial("Cotton");
+$products12->setSize("S");
+$products12->setWashable(true);
 $products12->setWeight(10000);
+
+try {
+    $products12->setDescription("descrizione cuccetta da interno");
+} catch (Exception $e) {
+    $errore["messaggio"] = $e->getMessage();
+    $errore["riga"] = $e->getLine();
+    $arrayErrori[] = $errore;
+}
 
 // creo istanza array di prodotti
 $arrayProducts = new ArrayProducts();
-
 $arrayProducts->SetProducts($products1);
 $arrayProducts->SetProducts($products2);
 $arrayProducts->SetProducts($products3);
@@ -204,7 +257,7 @@ $arrayProducts->SetProducts($products12);
                     //  ottento nome prodotto
                     echo $curProduct->getName();
                     //  inserimento icona cane o gatto
-                    echo $curProduct->genre->getGenre();
+                    echo $curProduct->getGenre();
                     // inserimento icona categoria
                     echo $curProduct->getIconCategory();
                     ?>
@@ -254,12 +307,12 @@ $arrayProducts->SetProducts($products12);
         </div>
     <?php } ?>
     <!-- /ciclo array -->
-            <?php foreach ($arrayErrori as $curError) { ?>
-                <div class="errori">
-                    <?php echo $curError['messaggio']; ?>
-                    <?php echo "a riga: " . $curError['riga']; ?>
-                </div>
-            <?php } ?>
+    <?php foreach ($arrayErrori as $curError) { ?>
+        <div class="errori">
+            <?php echo $curError['messaggio']; ?>
+            <?php echo "a riga: " . $curError['riga']; ?>
+        </div>
+    <?php } ?>
 
 </body>
 
