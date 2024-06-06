@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/models/products.php";
 require_once __DIR__ . "/models/toys.php";
-require_once __DIR__ . "/models/genre.php";
+// require_once __DIR__ . "/models/genre.php";
 require_once __DIR__ . "/models/foods.php";
 require_once __DIR__ . "/models/kennels.php";
 require_once __DIR__ . "/models/arrayProducts.php";
@@ -16,7 +16,6 @@ $products1->setImage("./img/squalo.jpeg");
 $products1->setQuantityInPack(10);
 $products1->setExpirationDate(2024 / 06 / 29);
 $products1->setWeight(9500);
-
 
 try {
     $products1->setDescription("descrizione carne squalo bianco");
@@ -53,7 +52,7 @@ $products3->setQuantityInPack(6);
 $products3->setExpirationDate(2024 / 07 / 2025);
 $products3->setWeight(6000);
 try {
-    $products3->setDescription("desscrizione carne di cerco canadese");
+    $products3->setDescription("des");
 } catch (Exception $e) {
     $errore["messaggio"] = $e->getMessage();
     $errore["riga"] = $e->getLine();

@@ -12,13 +12,7 @@ class Products
 
     public function __construct(string $genre)
     {
-        if (strtolower($genre) === "cane") {
-            $this->genre = "<i class='fa-solid fa-dog text-info'></i>";
-        } elseif (strtolower($genre) === "gatto") {
-            $this->genre = "<i class='fa-solid fa-cat text-success'></i>";
-        } else {
-            throw new Exception("inserisci come tipo Cane o Gatto");
-        }
+        $this->genre = $this->setGenre($genre);
     }
 
     public function setName($name)
@@ -84,8 +78,21 @@ class Products
         return $this->genre;
     }
 
+    public function setGenre(string $genre)
+    {
+        if (strtolower($genre) === "cane") {
+            $this->genre = "<i class='fa-solid fa-dog text-info'></i>";
+        } elseif (strtolower($genre) === "gatto") {
+            $this->genre = "<i class='fa-solid fa-cat text-success'></i>";
+        } else {
+            throw new Exception("Inserisci come tipo Cane o Gatto");
+        }
+    }
+
+
     public function getIconCategory()
     {
         return $this->iconCategory;
     }
+
 }
