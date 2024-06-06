@@ -13,15 +13,8 @@ $products1->setName("Carne di squalo bianco");
 $products1->setPrice(25.00);
 $products1->setImage("./img/squalo.jpeg");
 $products1->setQuantityInPack(10);
-    try {
-        $products1->setExpirationDate('2025/06/29');
-    } catch (Exception $e) {
-        $errore= [
-            'message' => $e->getMessage(),
-            'code' => $e->getCode()
-            ];
-        file_put_contents('error_log.json', json_encode($errore));
-    }
+$products1->setExpirationDate('2025/06/29');
+
         
 
 $products1->setWeight(9500);
