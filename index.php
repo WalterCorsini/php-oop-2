@@ -14,7 +14,7 @@ $products1->setName("Carne di squalo bianco");
 $products1->setPrice(25.00);
 $products1->setImage("./img/squalo.jpeg");
 $products1->setQuantityInPack(10);
-$products1->setExpirationDate(2024 / 06 / 29);
+$products1->setExpirationDate('2024/06/29');
 $products1->setWeight(9500);
 
 try {
@@ -31,7 +31,7 @@ $products2->setName("Patè di trota albina");
 $products2->setPrice(10.00);
 $products2->setImage("./img/trota.jpeg");
 $products2->setQuantityInPack(6);
-$products2->setExpirationDate(2024 / 07 / 2025);
+$products2->setExpirationDate('2025/07/21');
 $products2->setWeight(7500);
 
 try {
@@ -49,7 +49,7 @@ $products3->setName("carne di cervo canadese");
 $products3->setPrice(10.00);
 $products3->setImage("./img/cervo.jpeg");
 $products3->setQuantityInPack(6);
-$products3->setExpirationDate(2024 / 07 / 2025);
+$products3->setExpirationDate('2024/06/21');
 $products3->setWeight(6000);
 try {
     $products3->setDescription("des");
@@ -65,7 +65,7 @@ $products4->setName("carne di coniglio lillipuzziano");
 $products4->setPrice(12.00);
 $products4->setImage("./img/coniglio.jpeg");
 $products4->setQuantityInPack(6);
-$products4->setExpirationDate(2024 / 07 / 2025);
+$products4->setExpirationDate('2025/07/20');
 $products4->setWeight(10000);
 try {
     $products4->setDescription("desscrizione carne di coniglio lillipuzziano");

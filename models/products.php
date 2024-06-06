@@ -12,7 +12,8 @@ class Products
 
     public function __construct(string $genre)
     {
-        $this->genre = $this->setGenre($genre);
+        $this->setGenre($genre);
+
     }
 
     public function setName($name)

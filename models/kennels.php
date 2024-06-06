@@ -42,7 +42,8 @@ class Kennels extends Products
     public function setSize($size)
     {
 
-        if (strtolower($size) === "s" || strtolower($size) === "m" || strtolower($size) === "l" || strtolower($size) === "all size") {
+        // if (strtolower($size) === "s" || strtolower($size) === "m" || strtolower($size) === "l" || strtolower($size) === "all size") {
+        if (in_array(strtolower($size), ['s', 'm', 'l', 'all size'])) {
             $this->size = $size;
         } else {
             throw new Exception("valori consentit S M L o All Size");
