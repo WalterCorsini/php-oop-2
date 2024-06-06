@@ -13,7 +13,6 @@ class Products
     public function __construct(string $genre)
     {
         $this->setGenre($genre);
-
     }
 
     public function setName($name)
@@ -45,11 +44,6 @@ class Products
         return $this->price;
     }
 
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
     public function setDescription($description)
     {
         $descriptionNoSpace = str_replace(" ", "", $description);
@@ -59,6 +53,13 @@ class Products
             throw new exception("inserisci una descrizione tra i 10 e i 100 caratteri");
         }
     }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+
 
     public function setImage($image)
     {
@@ -74,11 +75,6 @@ class Products
         return $this->image;
     }
 
-    public function getGenre()
-    {
-        return $this->genre;
-    }
-
     public function setGenre(string $genre)
     {
         if (strtolower($genre) === "cane") {
@@ -89,6 +85,13 @@ class Products
             throw new Exception("Inserisci come tipo Cane o Gatto");
         }
     }
+
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+
+
 
 
     public function getIconCategory()

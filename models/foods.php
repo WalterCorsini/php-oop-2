@@ -35,11 +35,11 @@ class Foods extends Products
 
     public function setExpirationDate(string $expirationDate)
     {
-        if (date('Y/m/d') > $expirationDate) {
-            throw new Exception("Scaduto");
+        if (date('Y/m/d') <= $expirationDate) {
+            $this->expirationDate = $expirationDate;
+        } else {
+            throw new Exception("prodotto scaduto");
         }
-
-        $this->expirationDate = $expirationDate;
     }
 
     public function getExpirationDate()

@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . "/models/products.php";
 require_once __DIR__ . "/models/toys.php";
-// require_once __DIR__ . "/models/genre.php";
 require_once __DIR__ . "/models/foods.php";
 require_once __DIR__ . "/models/kennels.php";
 require_once __DIR__ . "/models/arrayProducts.php";
@@ -14,7 +13,17 @@ $products1->setName("Carne di squalo bianco");
 $products1->setPrice(25.00);
 $products1->setImage("./img/squalo.jpeg");
 $products1->setQuantityInPack(10);
-$products1->setExpirationDate('2024/06/29');
+    try {
+        $products1->setExpirationDate('2025/06/29');
+    } catch (Exception $e) {
+        $errore= [
+            'message' => $e->getMessage(),
+            'code' => $e->getCode()
+            ];
+        file_put_contents('error_log.json', json_encode($errore));
+    }
+        
+
 $products1->setWeight(9500);
 
 try {
@@ -31,7 +40,7 @@ $products2->setName("Patè di trota albina");
 $products2->setPrice(10.00);
 $products2->setImage("./img/trota.jpeg");
 $products2->setQuantityInPack(6);
-$products2->setExpirationDate('2025/07/21');
+$products2->setExpirationDate('2024/06/04');
 $products2->setWeight(7500);
 
 try {
@@ -49,10 +58,10 @@ $products3->setName("carne di cervo canadese");
 $products3->setPrice(10.00);
 $products3->setImage("./img/cervo.jpeg");
 $products3->setQuantityInPack(6);
-$products3->setExpirationDate('2024/06/21');
+$products3->setExpirationDate('2025/06/21');
 $products3->setWeight(6000);
 try {
-    $products3->setDescription("des");
+    $products3->setDescription("descrizione carne di cervo canadese");
 } catch (Exception $e) {
     $errore["messaggio"] = $e->getMessage();
     $errore["riga"] = $e->getLine();
